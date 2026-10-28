@@ -1,0 +1,44 @@
+{
+  "rewrites": [
+    {
+      "source": "/verify",
+      "destination": "/api/verify"
+    },
+    {
+      "source": "/config",
+      "destination": "/api/config"
+    },
+    {
+      "source": "/health",
+      "destination": "/api/health"
+    },
+    {
+      "source": "/tts",
+      "destination": "/api/tts"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    }
+  ],
+  "functions": {
+    "api/tts.js": {
+      "maxDuration": 30
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "voxwright",
+  "version": "4.0.0",
+  "private": true,
+  "description": "Voxwright - audio bot generator using the best voices on the visitor's device, with Gumroad subscriptions",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "msedge-tts": "^2.0.0"
+  }
+}

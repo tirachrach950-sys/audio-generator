@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Voxwright – Text to Voice Generator, Made for Content Creators</title>
+<meta name="description" content="Turn any script into a natural voice and download the MP3 instantly. For everyone, built especially for YouTube, TikTok, Reels and podcast creators. Try it free.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Voxwright – Text to Voice Generator, Made for Content Creators">
+<meta property="og:site_name" content="Voxwright">
+<meta property="og:description" content="Paste your script, pick a natural voice, download the MP3 instantly. Try it free.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#3b47d4">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Voxwright","applicationCategory":"MultimediaApplication","operatingSystem":"Any","description":"Turn any script into a natural voice and download the MP3 instantly. For everyone, built especially for content creators.","offers":[{"@type":"Offer","price":"0","priceCurrency":"USD","name":"Free"},{"@type":"Offer","price":"3.99","priceCurrency":"USD","name":"Pro monthly"},{"@type":"Offer","price":"39.99","priceCurrency":"USD","name":"Pro yearly"}]}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%278%27 fill=%27%233b47d4%27/%3E%3Cpath d=%27M8 14v4M12 10v12M16 7v18M20 10v12M24 14v4%27 stroke=%27white%27 stroke-width=%272.6%27 stroke-linecap=%27round%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f1f3f9; --surface:#ffffff; --ink:#151b3a; --muted:#5a6285; --line:#d9ddec;
+  --brand:#3b47d4; --brand-ink:#ffffff; --live:#12a594; --soft:#e4e7fb;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#10142b; --surface:#181d3d; --ink:#eceffd; --muted:#9aa3cc; --line:#2b3260;
+    --brand:#7f8bff; --brand-ink:#10142b; --live:#38d6c2; --soft:#232a57;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#10142b; --surface:#181d3d; --ink:#eceffd; --muted:#9aa3cc; --line:#2b3260;
+  --brand:#7f8bff; --brand-ink:#10142b; --live:#38d6c2; --soft:#232a57;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;line-height:1.08;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header.top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:22px 0}
+.logo{display:flex;align-items:center;gap:10px;font:700 21px "Bricolage Grotesque",sans-serif;text-decoration:none}
+.logo svg{width:30px;height:30px}
+nav a{margin-inline-start:24px;text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start;padding:40px 0 88px}
+.hero h1{font-size:clamp(40px,5.6vw,68px);font-weight:700}
+.hero p.lead{font-size:19px;color:var(--muted);max-width:30em;margin:22px 0 28px}
+.btn{display:inline-block;border:0;cursor:pointer;font:600 16px "Instrument Sans",sans-serif;padding:13px 22px;border-radius:12px;background:var(--brand);color:var(--brand-ink);text-decoration:none}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn:hover{filter:brightness(1.08)}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.trust{margin-top:34px;color:var(--muted);font-size:15px}
+
+/* console */
+.console{background:var(--surface);border:1.5px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 24px 60px -30px rgba(40,50,140,.45)}
+.console h2{font-size:22px;margin-bottom:4px}
+.console .sub{color:var(--muted);font-size:15px;margin:0 0 18px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:block;font-size:14px;font-weight:600;margin:0 0 6px}
+.field{margin-bottom:14px}
+input,select,textarea{width:100%;font:400 16px "Instrument Sans",sans-serif;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:180px;resize:vertical}
+input[type=range]{padding:0;accent-color:var(--brand);height:28px;background:none;border:0}
+.range-head{display:flex;justify-content:space-between;font-size:14px;color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{border:1.5px solid var(--line);background:transparent;color:var(--ink);font:500 14px "Instrument Sans",sans-serif;padding:7px 13px;border-radius:99px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--soft);border-color:var(--brand);color:var(--ink)}
+.stage{display:flex;align-items:center;gap:14px;background:var(--soft);border-radius:14px;padding:12px 14px;margin:4px 0 16px}
+.stage canvas{flex:1;height:44px;width:100%}
+.status{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;min-width:84px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--muted)}
+.speaking .dot{background:var(--live);box-shadow:0 0 0 5px color-mix(in srgb,var(--live) 25%,transparent)}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.vnote{font-size:14px;color:var(--muted);margin:-4px 0 14px;min-height:1.2em}
+.console details.diag{border:0;padding:0 0 14px;margin-top:-6px}
+.console .diag summary{font-size:14px;font-weight:500;color:var(--muted)}
+.console .diag p{font-size:13px;margin:6px 0 0}
+.warn{display:none;color:#b3261e;font-size:14px;margin-top:10px}
+
+section{padding:76px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(30px,3.6vw,44px);max-width:16em}
+section .intro{color:var(--muted);max-width:36em;margin:14px 0 40px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;padding-top:18px;border-top:3px solid var(--brand)}
+.steps li::before{content:"Step " counter(s);display:block;font-weight:600;color:var(--brand);margin-bottom:6px}
+.steps h3{font-size:22px;margin-bottom:8px}
+.steps p{margin:0;color:var(--muted)}
+.uses{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1.5px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface)}
+.uses div{padding:28px;border-bottom:1.5px solid var(--line)}
+.uses div:nth-child(odd){border-inline-end:1.5px solid var(--line)}
+.uses div:nth-last-child(-n+2){border-bottom:0}
+.uses h3{font-size:21px;margin-bottom:6px}
+.uses p{margin:0;color:var(--muted);font-size:16px}
+.code{display:none;margin-top:18px}
+.code.show{display:block}
+pre{margin:0;background:#0f1330;color:#dfe4ff;border-radius:12px;padding:16px;font:13px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;overflow-x:auto;max-height:260px}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font-weight:600;font-size:18px}
+details p{color:var(--muted);margin:10px 0 0;max-width:42em}
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:15px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:40px;padding-bottom:56px}
+  .steps{grid-template-columns:1fr}
+  .uses{grid-template-columns:1fr}
+  .uses div,.uses div:nth-child(odd){border-inline-end:0;border-bottom:1.5px solid var(--line)!important}
+  .uses div:last-child{border-bottom:0!important}
+  nav a{margin-inline-start:16px}
+  .row{grid-template-columns:1fr}
+}
+#lang{width:auto;margin-inline-start:24px;padding:6px 10px;font-size:15px}
+nav{display:flex;align-items:center;flex-wrap:wrap}
+pre{direction:ltr;text-align:left}
+html[dir=rtl] body,html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] h3,html[dir=rtl] input,html[dir=rtl] select,html[dir=rtl] textarea,html[dir=rtl] button,html[dir=rtl] summary{font-family:"Noto Sans Arabic","Instrument Sans",system-ui,sans-serif}
+html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] h3{letter-spacing:0;line-height:1.3}
+html[lang=fr] .steps li::before{content:"Étape " counter(s)}
+html[lang=ar] .steps li::before{content:"الخطوة " counter(s)}
+.plans{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:760px}
+.plan{position:relative;background:var(--surface);border:1.5px solid var(--line);border-radius:20px;padding:28px}
+.plan.pro{border-color:var(--brand);box-shadow:0 24px 60px -34px rgba(40,50,140,.5)}
+.plan h3{font-size:22px}
+.price{font:700 44px "Bricolage Grotesque","Instrument Sans",sans-serif;margin:10px 0 16px;letter-spacing:-.02em}
+.price span{font-size:16px;font-weight:500;color:var(--muted);margin-inline-start:4px}
+.plan ul{list-style:none;margin:0 0 22px;padding:0;color:var(--muted)}
+.plan li{padding:6px 0 6px 26px;position:relative}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--live);font-weight:700}
+html[dir=rtl] .plan li{padding:6px 26px 6px 0}
+html[dir=rtl] .plan li::before{left:auto;right:0}
+.badge{position:absolute;top:-12px;inset-inline-end:20px;background:var(--brand);color:var(--brand-ink);font:600 13px "Instrument Sans",sans-serif;padding:4px 12px;border-radius:99px}
+.bill{display:inline-flex;border:1.5px solid var(--line);border-radius:99px;padding:4px;gap:4px;margin:0 0 22px}.bill button{border:0;background:transparent;color:var(--ink);font:600 15px "Instrument Sans",sans-serif;padding:8px 18px;border-radius:99px;cursor:pointer}.bill button[aria-pressed=true]{background:var(--brand);color:var(--brand-ink)}.save{font-size:13px;font-weight:600;color:var(--live);margin-inline-start:6px}.plan .price b,dialog .pwprice b{font:inherit}[hidden]{display:none!important}
+.paynote{font-size:14px;color:var(--muted);margin:12px 0 0;min-height:1.2em}
+@media (max-width:860px){.plans{grid-template-columns:1fr}}
+dialog{border:1.5px solid var(--line);border-radius:20px;background:var(--surface);color:var(--ink);padding:28px;max-width:440px;width:calc(100% - 32px)}
+dialog::backdrop{background:rgba(10,14,40,.55)}
+dialog h2{font-size:26px;margin-bottom:10px}
+dialog p{color:var(--muted);margin:0 0 14px}
+dialog .pwprice{font:700 40px "Bricolage Grotesque","Instrument Sans",sans-serif;color:var(--ink);margin:6px 0 2px}
+dialog .pwprice span{font-size:16px;font-weight:500;color:var(--muted);margin-inline-start:4px}
+.trial{font-size:14px;color:var(--muted);margin:12px 0 0;min-height:1.2em}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#top" aria-label="Voxwright home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--brand)"/><g stroke="var(--brand-ink)" stroke-width="2.6" stroke-linecap="round"><path d="M9 13v6M13.5 9v14M18.5 11v10M23 14v4"/></g></svg>
+      Voxwright
+    </a>
+    <nav><a href="#how">How it works</a><a href="#uses">Use cases</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><select id="lang" aria-label="Language"><option value="en">English</option><option value="fr">Français</option><option value="ar">العربية</option></select></nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <h1>Turn any script into a voice. Download it instantly.</h1>
+        <p class="lead">For everyone who needs a voice: paste your text, pick a natural voice and get a ready-to-use MP3. Built especially for content creators making YouTube, TikTok, Reels and podcasts.</p>
+        <div class="btns">
+          <a class="btn" href="#studio">Create your voiceover</a>
+          <a class="btn alt" href="#how">See how it works</a>
+        </div>
+        <p class="trust">No account needed. Hear it free, then download your MP3 in one click with Pro.</p>
+      </div>
+
+      <div class="console" id="studio" role="region" aria-label="Audio bot generator">
+        <h2>Voiceover studio</h2>
+        <p class="sub">Paste your script, pick a voice, press Play, then download.</p>
+
+        <div class="chips" role="group" aria-label="Script templates" id="chips"></div>
+
+        <div class="row">
+          <div class="field"><label for="name">Project name</label><input id="name" value="Nova" maxlength="30"></div>
+          <div class="field"><label for="gender">Voice type</label><select id="gender"><option value="any">Any</option><option value="male">Male</option><option value="female">Female</option></select></div>
+        </div>
+        
+        <div class="row">
+          <div class="field"><label for="accent">Accent</label><select id="accent"><option value="all">All accents</option></select></div>
+          <div class="field"><label for="voice">Voice</label><select id="voice"><option>Loading voices…</option></select></div>
+        </div>
+        <div class="field"><label for="style">Voice style</label><select id="style"><option value="natural">Natural</option><option value="warm">Warm</option><option value="deep">Deep</option><option value="bright">Bright</option><option value="news">Newsreader</option><option value="story">Storyteller</option><option value="calm">Calm</option><option value="energetic">Energetic</option></select></div>
+        <p class="vnote" id="vnote" aria-live="polite"></p>
+        <details class="diag"><summary>Voices found on this device</summary><p id="diag"></p></details>
+        <div class="field"><label for="script">Script</label><textarea id="script" rows="9"></textarea></div>
+        <div class="row">
+          <div class="field"><div class="range-head"><label for="rate">Speed</label><span id="rv">1.0×</span></div><input id="rate" type="range" min="0.6" max="1.6" step="0.05" value="1"></div>
+          <div class="field"><div class="range-head"><label for="pitch">Pitch</label><span id="pv">1.0</span></div><input id="pitch" type="range" min="0.5" max="1.8" step="0.05" value="1"></div>
+        </div>
+
+        <div class="stage" id="stage"><div class="status"><span class="dot"></span><span id="st">Ready</span></div><canvas id="wave" aria-hidden="true"></canvas></div>
+
+        <div class="actions">
+          <button class="btn" id="play">Play</button>
+          <button class="btn alt" id="stop">Stop</button>
+          <button class="btn" id="dlaudio" type="button" style="display:none">Download MP3 instantly</button>
+          
+          <button class="btn alt" id="gen">Get embed code</button>
+        </div>
+        <p class="trial" id="trial" aria-live="polite"></p>
+        <p class="warn" id="warn">This browser can’t play speech. Try Chrome, Edge, Safari or Firefox.</p>
+
+        <div class="code" id="code">
+          <pre id="snippet"></pre>
+          <div class="actions" style="margin-top:12px"><button class="btn" id="copy">Copy code</button><button class="btn alt" id="dl">Download .html</button></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section id="how">
+    <h2>From script to finished voiceover in three steps</h2>
+    <p class="intro">No microphone, no editing software. Your script becomes a clean MP3 you can drop straight into your video or podcast.</p>
+    <ol class="steps">
+      <li><h3>Paste your script</h3><p>Write or paste what you want to say. Start from a template made for creators.</p></li>
+      <li><h3>Choose your voice</h3><p>Pick an accent and a male or female voice, then set the speed and style to fit your content.</p></li>
+      <li><h3>Download the MP3</h3><p>One click and your voiceover is saved. Drag it into any video or audio editor.</p></li>
+    </ol>
+  </section>
+
+  <section id="uses">
+    <h2>Made for creators, useful for everyone</h2>
+    <p class="intro">Voiceovers for videos, lessons, presentations and more, made in seconds instead of hours.</p>
+    <div class="uses">
+      <div><h3>YouTube videos</h3><p>Narrate tutorials, explainers and faceless channels without recording a single take.</p></div>
+      <div><h3>TikTok, Reels and Shorts</h3><p>Add a punchy hook or full narration to short videos in seconds.</p></div>
+      <div><h3>Podcasts and courses</h3><p>Create intros, outros and lesson narration with a consistent voice.</p></div>
+      <div><h3>Business and presentations</h3><p>Narrate demos, ads and presentations without booking a voice actor.</p></div>
+      <div><h3>Students and teachers</h3><p>Turn notes and lessons into audio you can listen to anywhere.</p></div>
+      <div><h3>Website talking button</h3><p>Add a talking button to any site with one snippet of embed code.</p></div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Simple pricing</h2>
+    <p class="intro">Try it free once, or go Pro for unlimited use.</p>
+    <div class="bill" role="group" aria-label="Billing"><button type="button" data-b="monthly" aria-pressed="true">Monthly</button><button type="button" data-b="yearly" aria-pressed="false">Yearly</button></div><span class="save bsave" hidden>Save 16%</span>
+    <div class="plans">
+      <div class="plan"><h3>Free</h3><p class="price">$0<span>1 free use</span></p><ul><li>One free listen, up to 300 characters</li><li>No account needed</li></ul><a class="btn alt" href="#studio">Use it free</a></div>
+      <div class="plan pro"><span class="badge">Most popular</span><h3>Pro</h3><p class="price"><b class="bm">$3.99</b><b class="by" hidden>$39.99</b><span class="bm">/month</span><span class="by" hidden>/year</span></p><ul><li>Unlimited listening and script length</li><li>Instant MP3 download of every script</li><li>All voices and accents, male and female</li><li>Embed code for your site</li><li>Cancel anytime</li></ul><button class="btn" id="getpro" type="button">Subscribe</button><p class="paynote" id="paynote" aria-live="polite"></p><p class="paynote"><a href="#" id="havesub">Already subscribed? Unlock Pro</a></p></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Questions, answered</h2>
+    <div style="margin-top:32px">
+      <details><summary>Which voices can I use?</summary><p>Voices come from each visitor’s device, so the accents available depend on the browser and system. Microsoft Edge offers the widest choice. If an accent is missing, the studio shows the closest voices instead.</p></details>
+      <details><summary>Is my script private?</summary><p>Listening happens in your browser. When you download an MP3, your script is sent to our server to generate the audio, and we do not store it.</p></details>
+      <details><summary>Do I need a microphone?</summary><p>No. Your voiceover is generated from text, so you never record anything.</p></details><details><summary>How long can my script be?</summary><p>Each MP3 can be up to 5,000 characters, roughly five minutes of speech. For longer videos, download your script in parts.</p></details>
+      <details><summary>Does it work on mobile?</summary><p>Yes. Mobile browsers require a tap to start audio, which is why the embed uses a button.</p></details>
+    </div>
+  </section>
+
+  <footer><span>© 2026 Voxwright</span><span>Made for teams that want their sites to speak.</span></footer>
+</div>
+
+<dialog id="paywall" aria-labelledby="pwt"><h2 id="pwt">Subscribe to continue</h2><p>The free plan includes one listen. Pro unlocks instant MP3 downloads, unlimited listening, every voice and accent, and embed code.</p><div class="bill" role="group" aria-label="Billing"><button type="button" data-b="monthly" aria-pressed="true">Monthly</button><button type="button" data-b="yearly" aria-pressed="false">Yearly</button></div><p class="pwprice"><b class="bm">$3.99</b><b class="by" hidden>$39.99</b><span class="bm">/month</span><span class="by" hidden>/year</span></p><p>Cancel anytime</p><div class="actions"><button class="btn" id="pwsub" type="button">Subscribe</button><button class="btn alt" id="pwclose" type="button">Not now</button></div><p style="margin-top:14px">Already paid? Enter the license key from your Gumroad receipt to unlock Pro.</p><div class="field" style="margin-top:6px"><label for="lic">License key</label><input id="lic" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX"><div class="actions" style="margin-top:8px"><button class="btn alt" id="licbtn" type="button">Activate</button></div></div>
+<p class="paynote" id="pwnote" aria-live="polite"></p></dialog>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var GUMROAD_URL="https://tirach.gumroad.com/l/yiifii"; /* paste your Gumroad product link between the quotes */
+  var TPL=[
+    {k:"YouTube intro",n:"My Channel",t:"Welcome back to the channel! Today I’ll show you three simple tricks that will save you hours every week. Let’s get started.",r:1.05,p:1},
+    {k:"TikTok hook",n:"Hook",t:"Stop scrolling! This one trick will change how you create content forever. Watch until the end.",r:1.12,p:1.05},
+    {k:"Podcast intro",n:"Podcast",t:"Welcome to the show, where we talk about creativity, business and everything in between. Grab a coffee and let’s dive in.",r:.95,p:.95},
+    {k:"Explainer",n:"Explainer",t:"Here’s how it works. First, you write your script. Next, you choose a voice. Finally, you download the audio and drop it into your video.",r:1,p:1},
+    {k:"Français",n:"Hugo",t:"Bonjour et bienvenue sur la chaîne ! Aujourd’hui, je vous montre trois astuces simples pour gagner du temps chaque semaine.",r:1,p:.9,a:"fr-FR",g:"male"},
+    {k:"Español",n:"Lucía",t:"Hola a todos y bienvenidos al canal. Hoy les voy a enseñar tres trucos sencillos para crear contenido más rápido.",r:1,p:1.05,a:"es-ES",g:"female"}
+  ];
+  var synth=window.speechSynthesis, voices=[], speaking=false;
+  var chips=$("chips");
+  TPL.forEach(function(t,i){
+    var b=document.createElement("button");b.className="chip";b.type="button";b.textContent=t.k;b.setAttribute("aria-pressed",i===0);
+    b.onclick=function(){apply(t);[].forEach.call(chips.children,function(c){c.setAttribute("aria-pressed",c===b)})};
+    chips.appendChild(b);
+  });
+  function lab(){$("rv").textContent=Number($("rate").value).toFixed(2).replace(/0$/,"")+"×";$("pv").textContent=Number($("pitch").value).toFixed(2).replace(/0$/,"");}
+  $("rate").oninput=$("pitch").oninput=lab;
+
+  var MALE_N="male|david|mark|daniel|george|james|richard|guy|ryan|alex|thomas|jorge|diego|pablo|carlos|jamal|hamed|naayf|shakir|tarik|maged|fred|paul|henri|claude|antoine|stefan|conrad|jan|ravi|hemant|prabhat|ichiro|kangkang|yunyang|yunxi|ivan|pavel|cem|ahmet|filipe|enzo|liam|ahmed|hamdan|salman|raul|luca|killian|connor|sam|christopher|eric|davis|jason|tony|brian|rishi|oliver|william|hugo|matthew|aaron|arthur|gordon|rocko|reed|alvaro|alonso|tomas|duarte|antonio|maarten|dmitry|madhur|keita|injoon|abeo|luke|gerard|ismael|hedi|zahid|michael|nathan|stephan|bruno|cosimo|sergio|jose|juan|miguel|andrei|nicolas|jean|pierre|marc|stefanos|mateo|david";
+  var FEMALE_N="female|zira|hazel|susan|samantha|karen|moira|tessa|fiona|victoria|allison|ava|serena|kate|mouna|salma|hoda|zariyah|fatima|amina|reem|jenny|aria|sonia|natasha|neerja|emily|leah|clara|ezinne|denise|sylvie|charline|elvira|dalia|elena|paloma|francisca|raquel|katja|elsa|colette|emel|svetlana|swara|nanami|sunhi|xiaoxiao|huihui|yaoyao|heami|hortense|julie|paulina|helena|laura|sabina|maria|lucia|isabella|amelie|mia|anna|ioana|hedda|ayumi|haruka|sayaka|yuna|joana|luciana|catherine|linda|heather|cortana|zuzana|monica|alice|amelia|carmit|ellen|samira|lekha|kalpana|veena|tian-tian|ting-ting|sin-ji|mei-jia|yelda|milena|katya|irina|yu-shu|kyoko|jessica|michelle|libby|maisie|clarita|eka";
+  var mRx=new RegExp("\\b("+MALE_N+")\\b","i"),fRx=new RegExp("\\b("+FEMALE_N+")\\b","i");
+  function gOf(v){return fRx.test(v.name)?"female":mRx.test(v.name)?"male":"unknown"}
+  function isMale(v){return gOf(v)==="male"}
+  function norm(l){return (l||"").replace("_","-").toLowerCase()}
+  var STYLES={natural:{r:1,p:1,pause:260},warm:{r:.95,p:.92,pause:340},deep:{r:.92,p:.78,pause:300},bright:{r:1.05,p:1.15,pause:220},news:{r:1.08,p:.95,pause:200},story:{r:.9,p:1,pause:520},calm:{r:.85,p:.9,pause:600},energetic:{r:1.18,p:1.1,pause:150}};
+  function style(){return STYLES[$("style").value]||STYLES.natural}
+  function clamp(x,a,b){return Math.max(a,Math.min(b,x))}
+  /* 3 = natural/neural-quality voices built into the device (Edge "Natural", etc.), 0 = robotic */
+  function qual(v){var n=v.name||"";if(/natural|neural|online/i.test(n))return 3;if(/^google|siri|premium|enhanced/i.test(n))return 2;if(/espeak|compact/i.test(n))return 0;return 1}
+  /* if the device has no voice of the chosen gender, reuse the closest voice with a shifted pitch */
+  function shiftFor(v){var g=$("gender").value;if(g==="any"||!v)return 1;var vg=gOf(v);if(vg===g)return 1;if(g==="male")return vg==="female"?.72:.82;return vg==="male"?1.3:1.15}
+  function effPitch(){var v=voices[$("voice").value];return Math.round(clamp(+$("pitch").value*style().p*shiftFor(v),.1,2)*100)/100}
+  function effRate(){return Math.round(clamp(+$("rate").value*style().r,.3,3)*100)/100}
+  var dnL=null,dnR=null;try{dnL=new Intl.DisplayNames(["en"],{type:"language"});dnR=new Intl.DisplayNames(["en"],{type:"region"})}catch(e){}
+  function canon(l){var p=(l||"").replace("_","-").split("-");return p[0].toLowerCase()+(p[1]?"-"+p[1].toUpperCase():"")}
+  function langName(c){var l=c.split("-")[0];try{if(dnL)l=dnL.of(l)||l}catch(e){}return l}
+  function accName(c){var p=c.split("-"),n=langName(c);if(p[1]){var r=p[1];try{if(dnR)r=dnR.of(p[1])||p[1]}catch(e){}n+=" ("+r+")"}return n}
+  var wantAcc=null,accTouched=false;
+  /* the accent list only contains accents this device can really speak */
+  function buildAccents(){
+    var sel=$("accent"),prev=wantAcc||((accTouched||sel.value!=="all")?sel.value:""),map={};
+    voices.forEach(function(v){var c=canon(v.lang);if(c)map[c]=1});
+    var codes=Object.keys(map).sort(function(a,b){var x=langName(a),y=langName(b);return x===y?accName(a).localeCompare(accName(b)):x.localeCompare(y)});
+    var groups={};codes.forEach(function(c){var l=c.split("-")[0];(groups[l]=groups[l]||[]).push(c)});
+    sel.innerHTML="";
+    var all=document.createElement("option");all.value="all";all.textContent="All accents";sel.appendChild(all);
+    Object.keys(groups).sort(function(a,b){return langName(a).localeCompare(langName(b))}).forEach(function(l){
+      var g=document.createElement("optgroup");g.label=langName(l);
+      groups[l].forEach(function(c){var o=document.createElement("option");o.value=c;o.textContent=accName(c);g.appendChild(o)});
+      sel.appendChild(g);
+    });
+    function has(v){return [].some.call(sel.options,function(o){return o.value===v})}
+    var want=prev;
+    if(!want||!has(want)){
+      var base=(want||"").split("-")[0],cand=base?codes.filter(function(c){return c.split("-")[0]===base})[0]:"";
+      if(!cand){var nl=canon(navigator.language||"en-US");cand=has(nl)?nl:codes.filter(function(c){return c.split("-")[0]===nl.split("-")[0]})[0]||(has("en-US")?"en-US":"")}
+      want=cand||"all";
+    }
+    sel.value=want;
+    if(voices.length)wantAcc=null;
+  }
+  function apply(t){$("name").value=t.n;$("script").value=t.t;$("rate").value=t.r;$("pitch").value=t.p;if(t.a)wantAcc=t.a;if(t.g&&$("gender").value==="any")$("gender").value=t.g;lab();if(synth&&voices.length)loadVoices();}
+  function loadVoices(){
+    if(!synth){$("warn").style.display="block";return}
+    voices=synth.getVoices();
+    var sel=$("voice"),cur=sel.options[sel.selectedIndex],prevName=cur&&cur.dataset?cur.dataset.n:"";
+    buildAccents();
+    var ac=$("accent").value,g=$("gender").value,note="";
+    var idx=voices.map(function(v,i){return i});
+    var list=idx.filter(function(i){return ac==="all"||canon(voices[i].lang)===ac});
+    if(g!=="any"){
+      var gl=list.filter(function(i){return gOf(voices[i])===g}),adj=g==="male"?"deeper":"higher";
+      if(gl.length)list=gl;
+      else if(ac!=="all"){
+        var pre=ac.split("-")[0];
+        gl=idx.filter(function(i){return canon(voices[i].lang).split("-")[0]===pre&&gOf(voices[i])===g});
+        if(gl.length){list=gl;note="No "+g+" voice for this exact accent. Showing a "+g+" voice in the same language."}
+        else if(list.length)note="No "+g+" voice is installed for this accent, so the closest voice is used with a "+adj+" pitch."
+      }else if(list.length)note="No "+g+" voice is installed here, so the closest voice is used with a "+adj+" pitch."
+    }
+    list.sort(function(a,b){return qual(voices[b])-qual(voices[a])||voices[a].name.localeCompare(voices[b].name)});
+    sel.innerHTML="";
+    list.forEach(function(i){var v=voices[i],o=document.createElement("option");o.value=i;o.dataset.n=v.name;o.textContent=(qual(v)>=3?"★ ":"")+v.name.replace(/^(Microsoft|Google)\s/,"").replace(/\s*Online\s*\(Natural\)/i," (Natural)").replace(/\s+-\s+.*$/,"")+" ("+v.lang+", "+gOf(v)+")";sel.appendChild(o)});
+    if(prevName){for(var k=0;k<sel.options.length;k++)if(sel.options[k].dataset.n===prevName){sel.selectedIndex=k;break}}
+    if(!voices.length)sel.innerHTML="<option>Default voice</option>";
+    var nat=voices.filter(function(v){return qual(v)>=3}).length;
+    if(voices.length&&!nat&&!note)note="Tip: open this page in Microsoft Edge to unlock the free “Natural” voices. They are the most human-sounding option, with no server.";
+    $("vnote").textContent=note||(list.length?list.length+" voice"+(list.length>1?"s":"")+" available"+(nat?" (★ = natural, recommended)":""):"");
+    var langs=Object.keys(voices.reduce(function(m,v){m[langName(canon(v.lang))]=1;return m},{}));
+    $("diag").textContent=voices.length+" voices installed ("+nat+" natural). Languages: "+(langs.length?langs.join(", "):"none")+".";
+  }
+  $("accent").onchange=function(){accTouched=true;loadVoices()};$("gender").onchange=loadVoices;
+  apply(TPL[0]);
+  if(synth){loadVoices();synth.onvoiceschanged=loadVoices;var tries=0,iv=setInterval(function(){if(synth.getVoices().length!==voices.length)loadVoices();if(++tries>12)clearInterval(iv)},500)}else{$("warn").style.display="block"}
+
+  /* waveform */
+  var cv=$("wave"),cx=cv.getContext("2d"),raf=0,ph=0;
+  function size(){var r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;cv.width=r.width*d;cv.height=r.height*d}
+  function color(){return getComputedStyle(document.documentElement).getPropertyValue(speaking?"--brand":"--muted").trim()}
+  function draw(){
+    var w=cv.width,h=cv.height,n=Math.floor(w/(8*(window.devicePixelRatio||1)));
+    cx.clearRect(0,0,w,h);cx.fillStyle=color();ph+=.18;
+    var bw=w/n;
+    for(var i=0;i<n;i++){
+      var a=speaking?(.25+.75*Math.abs(Math.sin(ph+i*.45)*Math.cos(ph*.6+i*.2))):.08;
+      var bh=Math.max(3,h*a);
+      cx.fillRect(i*bw+bw*.2,(h-bh)/2,bw*.6,bh);
+    }
+    raf=requestAnimationFrame(draw);
+  }
+  size();window.addEventListener("resize",size);draw();
+
+  function setState(on){speaking=on;$("stage").classList.toggle("speaking",on);$("st").textContent=T(on?"Speaking":"Ready")}
+  function chunks(t){
+    var m=t.replace(/\s+/g," ").trim().match(/[^.!?؟۔]+[.!?؟۔]*\s*/g)||[t],out=[];
+    m.forEach(function(x){
+      while(x.length>180){var c=Math.max(x.lastIndexOf(",",180),x.lastIndexOf("،",180),x.lastIndexOf(" ",180));if(c<60)c=180;out.push(x.slice(0,c+1));x=x.slice(c+1)}
+      if(x.trim())out.push(x);
+    });
+    return out.length?out:[" "];
+  }
+  function play(){if(!gate())return;playNow()}
+  var runId=0;
+  function playNow(onDone){
+    if(!synth)return;
+    runId++;synth.cancel();
+    var id=runId,parts=chunks(scriptText()||" "),sel=$("voice"),pause=style().pause,rate=effRate();
+    /* try the chosen voice first, then the next voices of the same accent if it stays silent */
+    var order=[],n=sel.options.length,s0=Math.max(0,sel.selectedIndex),oi=0,at=0,i=0,started=false,wd=0,pitch=effPitch(),v=voices[sel.value];
+    for(var q=0;q<n&&order.length<6;q++)order.push((s0+q)%n);
+    function done(){clearTimeout(wd);setState(false);if(onDone)onDone()}
+    function nextVoice(why){
+      clearTimeout(wd);at++;
+      if(oi+1<order.length){
+        oi++;sel.selectedIndex=order[oi];v=voices[sel.value];pitch=effPitch();i=0;started=false;
+        try{synth.cancel()}catch(e){}
+        $("vnote").textContent="That voice stayed silent, so “"+((sel.options[order[oi]]||{}).dataset||{}).n+"” is used instead.";
+        setTimeout(next,120);
+      }else{
+        done();$("vnote").textContent=why||"Nothing played. No voice for this accent is working here. Try Microsoft Edge or pick another accent."
+      }
+    }
+    function next(){
+      if(id!==runId)return;
+      var my=at,u=new SpeechSynthesisUtterance(parts[i]);
+      if(v){u.voice=v;u.lang=v.lang}
+      u.rate=rate;u.pitch=pitch;u.volume=1;
+      u.onstart=function(){if(my!==at)return;started=true;clearTimeout(wd);if(id===runId)setState(true)};
+      u.onend=function(){if(id!==runId||my!==at)return;i++;if(i<parts.length)setTimeout(next,pause);else done()};
+      u.onerror=function(e){
+        if(id!==runId||my!==at)return;
+        if(e&&(e.error==='canceled'||e.error==='interrupted'))return;
+        if(!started&&i===0)nextVoice();else{done();$("vnote").textContent="Playback failed ("+(e&&e.error||"unknown")+"). Pick another voice or try Microsoft Edge."}
+      };
+      try{synth.resume()}catch(e){}
+      synth.speak(u);
+      if(i===0){clearTimeout(wd);wd=setTimeout(function(){if(id===runId&&my===at&&!started)nextVoice()},(v&&v.localService===false)?4500:2500)}
+    }
+    /* Chrome swallows speak() fired right after cancel(), so wait a moment */
+    setTimeout(next,120);
+  }
+  $("play").onclick=play;
+  $("stop").onclick=function(){runId++;if(synth)synth.cancel();setState(false)};
+
+  /* ---- Download audio: records the voice playing in this tab and saves it as WAV ---- */
+  function wav16(b){
+    var n=b.length,sr=b.sampleRate,c0=b.getChannelData(0),c1=b.numberOfChannels>1?b.getChannelData(1):null,ab=new ArrayBuffer(44+n*2),v=new DataView(ab);
+    function w(o,t){for(var i=0;i<t.length;i++)v.setUint8(o+i,t.charCodeAt(i))}
+    w(0,"RIFF");v.setUint32(4,36+n*2,true);w(8,"WAVE");w(12,"fmt ");v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);v.setUint32(24,sr,true);v.setUint32(28,sr*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);w(36,"data");v.setUint32(40,n*2,true);
+    for(var i=0,o=44;i<n;i++,o+=2){var x=c1?(c0[i]+c1[i])/2:c0[i];x=Math.max(-1,Math.min(1,x));v.setInt16(o,x<0?x*32768:x*32767,true)}
+    return new Blob([ab],{type:"audio/wav"});
+  }
+  function saveFile(b,ext){var u=URL.createObjectURL(b),a=document.createElement("a"),n=($("name").value||"voice").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"voice";a.href=u;a.download="voxwright-"+n+"."+ext;document.body.appendChild(a);a.click();setTimeout(function(){a.remove();URL.revokeObjectURL(u)},4000);$("vnote").textContent=T("Audio downloaded")}
+  function finishRec(blob){
+    blob.arrayBuffer().then(function(ab){var C=window.AudioContext||window.webkitAudioContext,c=new C();return c.decodeAudioData(ab).then(function(b){try{c.close()}catch(e){}return wav16(b)})}).catch(function(){return blob}).then(function(out){saveFile(out,out.type==="audio/wav"?"wav":"webm")});
+  }
+  function downloadByRecording(){
+    var md=navigator.mediaDevices;
+    if(!md||!md.getDisplayMedia||!window.MediaRecorder){$("vnote").textContent="Download needs Chrome or Edge on a computer.";return}
+    $("vnote").textContent="In the window that opens, choose “This tab”, tick “Share tab audio”, then press Share.";
+    md.getDisplayMedia({video:true,audio:true,preferCurrentTab:true,selfBrowserSurface:"include",systemAudio:"include"}).then(function(stream){
+      var at=stream.getAudioTracks();
+      if(!at.length){stream.getTracks().forEach(function(t){t.stop()});$("vnote").textContent="No audio was shared. Try again and tick “Share tab audio”.";return}
+      var rec=new MediaRecorder(new MediaStream(at)),parts=[];
+      rec.ondataavailable=function(e){if(e.data&&e.data.size)parts.push(e.data)};
+      rec.onstop=function(){stream.getTracks().forEach(function(t){t.stop()});finishRec(new Blob(parts,{type:rec.mimeType||"audio/webm"}))};
+      rec.start();
+      $("vnote").textContent="Recording… the voice plays once, then your file downloads.";
+      setTimeout(function(){playNow(function(){setTimeout(function(){if(rec.state!=="inactive")rec.stop()},700)})},400);
+    }).catch(function(e){$("vnote").textContent=(e&&e.name==="NotAllowedError")?"Recording cancelled.":"Recording is not available in this browser."});
+  }
+  /* simple download: the server makes an MP3, no permission needed. Falls back to recording if it fails. */
+  function downloadAudio(){
+    if(!isPro()){showPaywall();return}
+    var btn=$("dlaudio"),v=voices[$("voice").value],g=$("gender").value;
+    if(g==="any")g=v?gOf(v):"female";
+    var raw=Math.round(clamp(+$("pitch").value*style().p,.1,2)*100)/100;
+    btn.disabled=true;$("vnote").textContent=T("Loading");
+    fetch("/tts",{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json"},body:JSON.stringify({text:scriptText(),lang:v?v.lang:$("accent").value,gender:g,rate:effRate(),pitch:raw})})
+      .then(function(r){if(r.status===402){showPaywall();throw new Error("sub")}if(!r.ok)throw new Error("tts");return r.blob()})
+      .then(function(b){btn.disabled=false;saveFile(b,"mp3")})
+      .catch(function(e){btn.disabled=false;if(e&&e.message==="sub")return;downloadByRecording()});
+  }
+  $("dlaudio").onclick=downloadAudio;
+  $("dlaudio").style.display="";
+
+  function esc(s){return s.replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/\n/g," ").replace(/</g,"\\u003c")}
+  function build(){
+    var v=voices[$("voice").value],name=$("name").value||"Bot",nm=name.replace(/[<>"]/g,"");
+    var L=['<button id="audio-bot" aria-label="Talk to '+nm+'">Talk to '+nm+'</button>','<script>','(function(){',
+      '  var text = "'+esc($("script").value)+'";',
+      '  var voiceName = "'+(v?esc(v.name):"")+'", lang = "'+(v?esc(v.lang):"")+'";',
+      '  var rate = '+effRate()+', pitch = '+effPitch()+', pause = '+style().pause+', run = 0;',
+      '  document.getElementById("audio-bot").onclick = function(){',
+      '    var s = window.speechSynthesis; if (!s) return; s.cancel(); var id = ++run;',
+      '    var vs = s.getVoices(), v = vs.filter(function(x){return x.name === voiceName})[0] || vs.filter(function(x){return x.lang === lang})[0];',
+      '    var parts = text.match(/[^.!?؟۔]+[.!?؟۔]*\\s*/g) || [text], i = 0;',
+      '    (function next(){',
+      '      if (id !== run || i >= parts.length) return;',
+      '      var u = new SpeechSynthesisUtterance(parts[i]);',
+      '      if (v) { u.voice = v; u.lang = v.lang; }',
+      '      u.rate = rate; u.pitch = pitch;',
+      '      u.onend = function(){ i++; setTimeout(next, pause); };',
+      '      s.speak(u);',
+      '    })();',
+      '  };','})();','<\/script>'];
+    return L.join("\n");
+  }
+  $("gen").onclick=function(){
+    if(!isPro()){showPaywall();return}
+    Promise.resolve(build()).then(function(code){$("snippet").textContent=code;$("code").classList.add("show");$("code").scrollIntoView({block:"nearest",behavior:"smooth"})}).catch(function(e){
+      if(e&&e.message==="subscription required"){proActive=false;showTrial();showPaywall();return}
+      $("vnote").textContent="Could not create the embed code: "+(e&&e.message||"try again")+"."
+    });
+  };
+  $("copy").onclick=function(){
+    var t=$("snippet").textContent,b=$("copy");
+    function ok(){b.textContent=T("Copied");setTimeout(function(){b.textContent=T("Copy code")},1600)}
+    try{navigator.clipboard.writeText(t).then(ok,function(){fallback(t,ok)})}catch(e){fallback(t,ok)}
+  };
+  function fallback(t,ok){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");ok()}catch(e){}document.body.removeChild(a)}
+  $("dl").onclick=function(){
+    var html='<!DOCTYPE html><html><head><meta charset="utf-8"><title>'+($("name").value||"Bot").replace(/[<>]/g,"")+'</title></head><body>\n'+$("snippet").textContent+'\n</body></html>';
+    var a=document.createElement("a");a.href="data:text/html;charset=utf-8,"+encodeURIComponent(html);a.download="audio-bot.html";a.click();
+  };
+
+  $("getpro").onclick=function(){subscribe($("paynote"))};
+  var billing="monthly";
+  function setBilling(b){billing=b;[].forEach.call(document.querySelectorAll(".bill button"),function(x){x.setAttribute("aria-pressed",x.dataset.b===b)});[].forEach.call(document.querySelectorAll(".bm"),function(x){x.hidden=b!=="monthly"});[].forEach.call(document.querySelectorAll(".by"),function(x){x.hidden=b!=="yearly"});[].forEach.call(document.querySelectorAll(".bsave"),function(x){x.hidden=b!=="yearly"})}
+  [].forEach.call(document.querySelectorAll(".bill button"),function(x){x.onclick=function(){setBilling(x.dataset.b)}});
+  function checkoutUrl(){return billing==="yearly"?GUMROAD_URL+(GUMROAD_URL.indexOf("?")>-1?"&":"?")+"recurrence=yearly":GUMROAD_URL}
+  function subscribe(n){
+    if(!GUMROAD_URL){n.textContent=T("Checkout isn’t connected yet. This is a preview of the pricing.");try{console.warn("Set GUMROAD_URL in Vercel settings")}catch(e){}return}
+    var w=null;try{w=window.open(checkoutUrl(),"_blank")}catch(e){}
+    if(w){try{w.opener=null}catch(e){}n.textContent="";return}
+    n.textContent="";var a=document.createElement("a");a.href=checkoutUrl();a.target="_blank";a.rel="noopener";a.textContent=T("Open checkout");a.style.textDecoration="underline";n.appendChild(a);
+  }
+  var trialMem={m:"",n:0},trialMode=false,TRIAL_MAX=1;
+  function curMonth(){var d=new Date();return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)}
+  function readTrial(){var r=null;try{r=JSON.parse(localStorage.getItem("vx-free")||"null")}catch(e){r=trialMem}if(!r||r.m!==curMonth())return {m:curMonth(),n:0};return r}
+  function trialCount(){return readTrial().n||0}
+  function trialUsed(){return trialCount()>=TRIAL_MAX}
+  
+  function markTrial(){var r=readTrial();r.n=(r.n||0)+1;trialMem=r;try{localStorage.setItem("vx-free",JSON.stringify(r))}catch(e){}}
+  var proActive=false;
+  var openMode=false;
+  function isPro(){return proActive||openMode}
+  function showTrial(){$("trial").textContent=isPro()?T(openMode&&!proActive?"Free to use":"Pro active"):T(trialUsed()?"Your free use is used. Subscribe to continue.":"Free plan: 1 use left")}
+  function showPaywall(){var d=$("paywall");try{d.showModal()}catch(e){d.setAttribute("open","")}}
+  function gate(){if(isPro()){trialMode=false;return true}if(trialUsed()){showPaywall();return false}trialMode=true;markTrial();showTrial();return true}
+  function scriptText(){var t=$("script").value;return trialMode?t.slice(0,300):t}
+  $("pwsub").onclick=function(){subscribe($("pwnote"))};
+  $("pwclose").onclick=function(){var d=$("paywall");if(d.close)d.close();else d.removeAttribute("open")};
+  $("licbtn").onclick=function(){
+    var k=$("lic").value.trim(),n=$("pwnote");
+    if(k.length<8){n.textContent=T("Enter your license key.");return}
+    n.textContent=T("Loading");$("licbtn").disabled=true;
+    activate(k).then(function(j){
+      $("licbtn").disabled=false;
+      if(j.valid){proActive=true;showTrial();n.textContent=T("Pro is active. Thank you!");setTimeout(function(){$("pwclose").onclick()},1100)}
+      else if(j.error==="not_configured"){n.textContent=T("Payments are being set up. Please try again soon.")}
+      else if(j.error==="busy"){n.textContent=T("Could not check your subscription. Try again in a minute.")}
+      else if(j.error==="key"){n.textContent=T("Enter your license key.")}
+      else{n.textContent=T("Invalid or expired license key.")}
+    }).catch(function(){$("licbtn").disabled=false;n.textContent=T("Could not check your subscription. Try again in a minute.")});
+  };
+  $("lic").onkeydown=function(e){if(e.key==="Enter"){e.preventDefault();$("licbtn").onclick()}};
+  var hs=$("havesub");if(hs)hs.onclick=function(e){e.preventDefault();showPaywall()};
+  function activate(key){return fetch("/verify",{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json"},body:JSON.stringify({key:key})}).then(function(r){return r.json().catch(function(){return {valid:false,error:"busy"}})})}
+  /* site language */
+  var DICT={"Download audio as WAV": ["Télécharger l’audio en WAV", "تنزيل الصوت بصيغة WAV"], "Voice style": ["Style de voix", "نمط الصوت"], "Natural": ["Naturel", "طبيعي"], "Warm": ["Chaleureux", "دافئ"], "Deep": ["Grave", "عميق"], "Bright": ["Clair", "مشرق"], "Newsreader": ["Présentateur", "مذيع أخبار"], "Storyteller": ["Conteur", "راوٍ"], "Calm": ["Calme", "هادئ"], "Energetic": ["Dynamique", "حيوي"], "Pricing": ["Tarifs", "الأسعار"], "Simple pricing": ["Des tarifs simples", "أسعار بسيطة"], "Pro": ["Pro", "احترافي"], "/month": ["/mois", "/شهر"], "Most popular": ["Le plus choisi", "الأكثر اختياراً"], "Starter templates": ["Modèles de départ", "نماذج جاهزة"], "Embed code": ["Code d’intégration", "كود التضمين"], "Male and female voices": ["Voix masculines et féminines", "أصوات ذكورية وأنثوية"], "Checkout isn’t connected yet. This is a preview of the pricing.": ["Le paiement n’est pas encore connecté. Ceci est un aperçu des tarifs.", "الدفع غير مفعّل بعد. هذا عرض أولي للأسعار."], "How it works": ["Comment ça marche", "كيف يعمل"], "Use cases": ["Cas d’usage", "حالات الاستخدام"], "FAQ": ["FAQ", "الأسئلة الشائعة"], "Build an audio bot that speaks for your brand.": ["Créez un bot audio qui parle pour votre marque.", "أنشئ روبوتاً صوتياً يتحدث باسم علامتك التجارية."], "Write what your bot should say, choose a voice, hear it instantly, then copy the code to put it on any website.": ["Écrivez ce que votre bot doit dire, choisissez une voix, écoutez-la tout de suite, puis copiez le code pour l’ajouter à n’importe quel site.", "اكتب ما يجب أن يقوله الروبوت، واختر صوتاً، واستمع إليه فوراً، ثم انسخ الكود لإضافته إلى أي موقع."], "Create your bot": ["Créer mon bot", "أنشئ روبوتك"], "See how it works": ["Voir comment ça marche", "شاهد كيف يعمل"], "Runs in your browser. No account, no upload, no waiting.": ["Fonctionne dans votre navigateur. Sans compte, sans envoi, sans attente.", "يعمل في متصفحك. بلا حساب ولا رفع ملفات ولا انتظار."], "Bot studio": ["Studio de bot", "استوديو الروبوت"], "Pick a starting point, edit the script, press Play.": ["Choisissez un modèle, modifiez le texte, appuyez sur Lire.", "اختر نموذجاً، وعدّل النص، ثم اضغط تشغيل."], "Support agent": ["Support client", "دعم العملاء"], "Receptionist": ["Accueil", "الاستقبال"], "Product guide": ["Guide produit", "دليل المنتج"], "Announcer": ["Annonceur", "المذيع"], "Bot name": ["Nom du bot", "اسم الروبوت"], "Voice type": ["Type de voix", "نوع الصوت"], "Any": ["Peu importe", "أي نوع"], "Male": ["Homme", "ذكر"], "Female": ["Femme", "أنثى"], "Voice engine": ["Moteur vocal", "محرك الصوت"], "Browser voices": ["Voix du navigateur", "أصوات المتصفح"], "Accent": ["Accent", "اللهجة"], "All accents": ["Tous les accents", "كل اللهجات"], "Voice": ["Voix", "الصوت"], "Script": ["Texte", "النص"], "Speed": ["Vitesse", "السرعة"], "Pitch": ["Hauteur", "درجة الصوت"], "Ready": ["Prêt", "جاهز"], "Speaking": ["En lecture", "يتحدث"], "Loading": ["Chargement", "جارٍ التحميل"], "Play": ["Lire", "تشغيل"], "Stop": ["Stop", "إيقاف"], "Get embed code": ["Obtenir le code", "احصل على الكود"], "Copy code": ["Copier le code", "انسخ الكود"], "Copied": ["Copié", "تم النسخ"], "Download .html": ["Télécharger .html", "تنزيل .html"], "Voices found on this device": ["Voix trouvées sur cet appareil", "الأصوات الموجودة على هذا الجهاز"], "This browser can’t play speech. Try Chrome, Edge, Safari or Firefox.": ["Ce navigateur ne peut pas lire la parole. Essayez Chrome, Edge, Safari ou Firefox.", "لا يستطيع هذا المتصفح تشغيل الكلام. جرّب Chrome أو Edge أو Safari أو Firefox."], "From script to live bot in three steps": ["Du texte au bot en trois étapes", "من النص إلى الروبوت في ثلاث خطوات"], "No audio files to record or host. Your bot speaks using the voices already built into your visitors’ devices.": ["Aucun fichier audio à enregistrer ou héberger. Votre bot parle avec les voix déjà intégrées aux appareils de vos visiteurs.", "لا حاجة لتسجيل ملفات صوتية أو استضافتها. يتحدث الروبوت بالأصوات المثبتة أصلاً على أجهزة زوارك."], "Write the script": ["Écrire le texte", "اكتب النص"], "Start from a template or paste your own lines. Keep it short; spoken copy works best under 40 words.": ["Partez d’un modèle ou collez vos propres phrases. Restez bref : un texte parlé fonctionne mieux sous 40 mots.", "ابدأ من نموذج أو الصق جملك الخاصة. اجعله قصيراً؛ فالنص المنطوق يعمل بأفضل شكل بأقل من 40 كلمة."], "Tune the voice": ["Régler la voix", "اضبط الصوت"], "Choose a voice, then adjust speed and pitch until it sounds like your brand.": ["Choisissez une voix, puis ajustez la vitesse et la hauteur jusqu’à ce qu’elle corresponde à votre marque.", "اختر صوتاً ثم اضبط السرعة ودرجة الصوت حتى يعبّر عن علامتك التجارية."], "Copy the code": ["Intégrer le code", "انسخ الكود وأضفه"], "Paste one snippet into your site. A button appears and your bot speaks when visitors press it.": ["Collez un extrait dans votre site. Un bouton apparaît et votre bot parle quand les visiteurs l’utilisent.", "الصق مقطعاً واحداً في موقعك. سيظهر زر، ويتحدث الروبوت عندما يضغط عليه الزوار."], "Where audio bots earn their place": ["Où les bots audio sont utiles", "أين تفيد الروبوتات الصوتية"], "Anywhere a short spoken message is clearer than a paragraph of text.": ["Partout où un court message parlé est plus clair qu’un paragraphe.", "في أي مكان تكون فيه رسالة منطوقة قصيرة أوضح من فقرة نصية."], "Welcome messages": ["Messages d’accueil", "رسائل الترحيب"], "Greet visitors, explain what to do first and point them to the right page.": ["Accueillez les visiteurs, expliquez par où commencer et orientez-les vers la bonne page.", "رحّب بالزوار، واشرح لهم من أين يبدؤون، ووجّههم إلى الصفحة المناسبة."], "Product tours": ["Visites guidées", "جولات المنتج"], "Narrate a feature walkthrough without making anyone watch a video.": ["Commentez une démonstration sans obliger personne à regarder une vidéo.", "اشرح الميزات صوتياً دون إجبار أحد على مشاهدة فيديو."], "Accessibility": ["Accessibilité", "سهولة الوصول"], "Offer a read-aloud option for key announcements and instructions.": ["Proposez une lecture à voix haute pour les annonces et consignes importantes.", "وفّر خيار القراءة بصوت عالٍ للإعلانات والتعليمات المهمة."], "Kiosks and events": ["Bornes et événements", "الأكشاك والفعاليات"], "Play announcements and wayfinding prompts on any screen with a browser.": ["Diffusez annonces et indications sur tout écran doté d’un navigateur.", "شغّل الإعلانات وإرشادات التوجيه على أي شاشة بها متصفح."], "Questions, answered": ["Vos questions, nos réponses", "أسئلة وأجوبة"], "Which voices can I use?": ["Quelles voix puis-je utiliser ?", "ما الأصوات التي يمكنني استخدامها؟"], "Does my text leave my browser?": ["Mon texte quitte-t-il mon navigateur ?", "هل يغادر نصي متصفحي؟"], "No. The script is spoken locally, and the embed code contains your text directly, so nothing is sent to a server.": ["Non. Le texte est lu localement et le code d’intégration contient directement votre texte ; rien n’est envoyé à un serveur.", "لا. يُنطق النص محلياً، ويحتوي كود التضمين على نصك مباشرة، فلا يُرسل شيء إلى خادم."], "Can the bot listen and reply?": ["Le bot peut-il écouter et répondre ?", "هل يستطيع الروبوت الاستماع والرد؟"], "This version speaks scripted lines. A conversational bot that listens and answers is the natural next step.": ["Cette version prononce des phrases préécrites. Un bot conversationnel qui écoute et répond est l’étape suivante.", "تنطق هذه النسخة جملاً مكتوبة مسبقاً. الروبوت الحواري الذي يستمع ويجيب هو الخطوة التالية."], "Does it work on mobile?": ["Ça marche sur mobile ?", "هل يعمل على الهاتف؟"], "Yes. Mobile browsers require a tap to start audio, which is why the embed uses a button.": ["Oui. Les navigateurs mobiles exigent un toucher pour lancer l’audio, d’où le bouton.", "نعم. تتطلب متصفحات الهاتف نقرة لبدء الصوت، ولهذا يستخدم التضمين زراً."], "Made for teams that want their sites to speak.": ["Conçu pour les équipes qui veulent que leur site parle.", "صُمم للفرق التي تريد لمواقعها أن تتحدث."], "Voices come from each visitor’s device, so the accents available depend on the browser and system. Microsoft Edge offers the widest choice. If an accent is missing, the studio shows the closest voices instead.": ["Les voix viennent de l’appareil de chaque visiteur ; les accents disponibles dépendent donc du navigateur et du système. Microsoft Edge offre le plus large choix. Si un accent manque, le studio propose les voix les plus proches.", "تأتي الأصوات من جهاز كل زائر، لذا تعتمد اللهجات المتاحة على المتصفح والنظام. يوفر Microsoft Edge أوسع اختيار. إذا لم تتوفر لهجة ما، يعرض الاستوديو أقرب الأصوات."], "Try it once, free. Then one simple monthly plan.": ["Essayez une fois, gratuitement. Ensuite, un seul abonnement mensuel.", "جرّبه مرة واحدة مجاناً. بعدها اشتراك شهري واحد وبسيط."], "Free trial": ["Essai gratuit", "تجربة مجانية"], "No account needed": ["Aucun compte requis", "لا حاجة إلى حساب"], "Try it free": ["Essayer gratuitement", "جرّب مجاناً"], "Unlimited listening and script length": ["Écoute et longueur de texte illimitées", "استماع وطول نص غير محدودين"], "All voices and accents, male and female": ["Toutes les voix et tous les accents, masculins et féminins", "جميع الأصوات واللهجات، ذكوراً وإناثاً"], "Cancel anytime": ["Résiliable à tout moment", "يمكنك الإلغاء في أي وقت"], "Subscribe": ["S’abonner", "اشترك"], "Subscribe to continue": ["Abonnez-vous pour continuer", "اشترك للمتابعة"], "Not now": ["Pas maintenant", "ليس الآن"], "Free trial: 1 listen left": ["Essai gratuit : 1 écoute restante", "التجربة المجانية: بقي استماع واحد"], "Free trial used. Subscribe to continue.": ["Essai gratuit utilisé. Abonnez-vous pour continuer.", "انتهت التجربة المجانية. اشترك للمتابعة."], "License key": ["Clé de licence", "مفتاح الترخيص"], "Activate": ["Activer", "تفعيل"], "Invalid or expired license key.": ["Clé de licence invalide ou expirée.", "مفتاح الترخيص غير صالح أو منتهي."], "Pro is active. Thank you!": ["Pro est actif. Merci !", "تم تفعيل Pro. شكراً لك!"], "Pro active": ["Pro actif", "Pro مفعّل"], "Free trial: 2 listens left": ["Essai gratuit : 2 écoutes restantes", "التجربة المجانية: بقي استماعان"], "2 listens": ["2 écoutes", "استماعان"], "Two free listens, up to 300 characters each": ["Deux écoutes gratuites, jusqu’à 300 caractères chacune", "استماعان مجانيان، حتى 300 حرف لكل منهما"], "The free trial includes two listens. Pro unlocks unlimited listening, every voice and accent, and embed code.": ["L’essai gratuit comprend deux écoutes. Pro débloque l’écoute illimitée, toutes les voix et tous les accents, et le code d’intégration.", "تتضمن التجربة المجانية استماعين. يتيح Pro الاستماع غير المحدود وجميع الأصوات واللهجات وكود التضمين."], "Open checkout": ["Ouvrir le paiement", "افتح صفحة الدفع"], "Download audio": ["Télécharger l’audio", "تنزيل الصوت"], "Audio downloaded": ["Audio téléchargé", "تم تنزيل الصوت"], "Monthly": ["Mensuel", "شهري"], "Yearly": ["Annuel", "سنوي"], "/year": ["/an", "/سنة"], "Save 16%": ["Économisez 16 %", "وفّر 16%"], "Try it free. Then pick monthly or yearly.": ["Essayez gratuitement. Puis choisissez mensuel ou annuel.", "جرّبه مجاناً. ثم اختر الاشتراك الشهري أو السنوي."], "Download audio as MP3": ["Télécharger l’audio en MP3", "تنزيل الصوت بصيغة MP3"], "Two free listens or downloads, up to 300 characters each": ["Deux écoutes ou téléchargements gratuits, jusqu’à 300 caractères chacun", "استماعان أو تنزيلان مجانيان، حتى 300 حرف لكل منهما"], "The free trial includes two listens or downloads. Pro unlocks unlimited listening, audio downloads, every voice and accent, and embed code.": ["L’essai gratuit comprend deux écoutes ou téléchargements. Pro débloque l’écoute illimitée, les téléchargements audio, toutes les voix et tous les accents, et le code d’intégration.", "تتضمن التجربة المجانية استماعين أو تنزيلين. يتيح Pro الاستماع غير المحدود وتنزيل الصوت وجميع الأصوات واللهجات وكود التضمين."], "Free to use": ["Utilisation libre", "استخدام مجاني"], "Free": ["Gratuit", "مجاني"], "1 free use": ["1 utilisation gratuite", "استخدام مجاني واحد"], "One free listen, up to 300 characters": ["Une écoute gratuite, jusqu’à 300 caractères", "استماع مجاني واحد، حتى 300 حرف"], "Try it free once, or go Pro for unlimited use.": ["Essayez-le gratuitement une fois, ou passez à Pro pour un usage illimité.", "جرّبه مجاناً مرة واحدة، أو انتقل إلى Pro للاستخدام غير المحدود."], "Use it free": ["Utiliser gratuitement", "استخدمه مجاناً"], "The free plan includes one listen. Pro unlocks unlimited listening, every voice and accent, and embed code.": ["L’offre gratuite comprend une écoute. Pro débloque l’écoute illimitée, toutes les voix et tous les accents, et le code d’intégration.", "تتضمن الخطة المجانية استماعاً واحداً. يتيح Pro الاستماع غير المحدود وجميع الأصوات واللهجات وكود التضمين."], "Your free use is used. Subscribe to continue.": ["Votre utilisation gratuite est utilisée. Abonnez-vous pour continuer.", "استُخدم استخدامك المجاني. اشترك للمتابعة."], "Free plan: 1 use left": ["Offre gratuite : 1 utilisation restante", "الخطة المجانية: بقي استخدام واحد"],"No account needed. Hear it instantly, then copy the code.": ["Aucun compte requis. Écoutez tout de suite, puis copiez le code.", "لا حاجة إلى حساب. استمع فوراً ثم انسخ الكود."],"Enter your license key.": ["Saisissez votre clé de licence.", "أدخل مفتاح الترخيص."],"Already paid? Enter the license key from your Gumroad receipt to unlock Pro.": ["Déjà payé ? Saisissez la clé de licence de votre reçu Gumroad pour débloquer Pro.", "هل دفعت بالفعل؟ أدخل مفتاح الترخيص الموجود في إيصال Gumroad لتفعيل Pro."],"Already subscribed? Unlock Pro": ["Déjà abonné ? Débloquer Pro", "مشترك بالفعل؟ فعّل Pro"],"Payments are being set up. Please try again soon.": ["Les paiements sont en cours de configuration. Réessayez bientôt.", "يجري إعداد الدفع. حاول مرة أخرى قريباً."],"Could not check your subscription. Try again in a minute.": ["Impossible de vérifier votre abonnement. Réessayez dans une minute.", "تعذّر التحقق من اشتراكك. حاول مرة أخرى بعد دقيقة."],"Turn your script into a voiceover. Download it instantly.": ["Transformez votre texte en voix off. Téléchargez-la instantanément.", "حوّل نصك إلى تعليق صوتي. حمّله فوراً."],"Paste your script, pick a natural voice and get a ready-to-use MP3 for YouTube, TikTok, Reels and podcasts. No microphone, no recording.": ["Collez votre texte, choisissez une voix naturelle et obtenez un MP3 prêt à l’emploi pour YouTube, TikTok, Reels et podcasts. Sans micro, sans enregistrement.", "الصق نصك، واختر صوتاً طبيعياً، واحصل على ملف MP3 جاهز لـ YouTube وTikTok وReels والبودكاست. بلا ميكروفون وبلا تسجيل."],"Create your voiceover": ["Créer ma voix off", "أنشئ تعليقك الصوتي"],"No account needed. Hear it free, then download your MP3 in one click with Pro.": ["Aucun compte requis. Écoutez gratuitement, puis téléchargez votre MP3 en un clic avec Pro.", "لا حاجة إلى حساب. استمع مجاناً ثم حمّل ملف MP3 بنقرة واحدة مع Pro."],"Voiceover studio": ["Studio de voix off", "استوديو التعليق الصوتي"],"Paste your script, pick a voice, press Play, then download.": ["Collez votre texte, choisissez une voix, appuyez sur Lire, puis téléchargez.", "الصق نصك، واختر صوتاً، واضغط تشغيل، ثم حمّل."],"Project name": ["Nom du projet", "اسم المشروع"],"Download MP3 instantly": ["Télécharger le MP3 instantanément", "حمّل MP3 فوراً"],"YouTube intro": ["Intro YouTube", "مقدمة YouTube"],"TikTok hook": ["Accroche TikTok", "جملة افتتاحية لـ TikTok"],"Podcast intro": ["Intro de podcast", "مقدمة بودكاست"],"Explainer": ["Vidéo explicative", "فيديو شرح"],"From script to finished voiceover in three steps": ["Du texte à la voix off finale en trois étapes", "من النص إلى التعليق الصوتي الجاهز في ثلاث خطوات"],"No microphone, no editing software. Your script becomes a clean MP3 you can drop straight into your video or podcast.": ["Sans micro ni logiciel de montage. Votre texte devient un MP3 propre à glisser directement dans votre vidéo ou votre podcast.", "بلا ميكروفون وبلا برنامج مونتاج. يتحول نصك إلى ملف MP3 نظيف يمكنك إضافته مباشرة إلى فيديو أو بودكاست."],"Paste your script": ["Collez votre texte", "الصق نصك"],"Write or paste what you want to say. Start from a template made for creators.": ["Écrivez ou collez ce que vous voulez dire. Partez d’un modèle conçu pour les créateurs.", "اكتب أو الصق ما تريد قوله. ابدأ من نموذج مصمم لصنّاع المحتوى."],"Choose your voice": ["Choisissez votre voix", "اختر صوتك"],"Pick an accent and a male or female voice, then set the speed and style to fit your content.": ["Choisissez un accent et une voix masculine ou féminine, puis réglez la vitesse et le style selon votre contenu.", "اختر لهجة وصوتاً ذكورياً أو أنثوياً، ثم اضبط السرعة والنمط ليناسبا محتواك."],"Download the MP3": ["Téléchargez le MP3", "حمّل ملف MP3"],"One click and your voiceover is saved. Drag it into any video or audio editor.": ["Un clic et votre voix off est enregistrée. Glissez-la dans n’importe quel éditeur vidéo ou audio.", "بنقرة واحدة يُحفظ تعليقك الصوتي. اسحبه إلى أي محرر فيديو أو صوت."],"Where creators use it": ["Où les créateurs l’utilisent", "أين يستخدمه صنّاع المحتوى"],"Voiceovers for every kind of content, made in seconds instead of hours.": ["Des voix off pour tous les contenus, en quelques secondes au lieu de plusieurs heures.", "تعليقات صوتية لكل أنواع المحتوى، في ثوانٍ بدل ساعات."],"YouTube videos": ["Vidéos YouTube", "فيديوهات YouTube"],"Narrate tutorials, explainers and faceless channels without recording a single take.": ["Commentez tutoriels, vidéos explicatives et chaînes sans visage sans enregistrer une seule prise.", "اشرح الدروس والفيديوهات التوضيحية والقنوات بلا ظهور دون تسجيل أي مقطع."],"TikTok, Reels and Shorts": ["TikTok, Reels et Shorts", "TikTok وReels وShorts"],"Add a punchy hook or full narration to short videos in seconds.": ["Ajoutez une accroche percutante ou une narration complète à vos vidéos courtes en quelques secondes.", "أضف جملة افتتاحية قوية أو تعليقاً كاملاً إلى الفيديوهات القصيرة في ثوانٍ."],"Podcasts and courses": ["Podcasts et formations", "البودكاست والدورات"],"Create intros, outros and lesson narration with a consistent voice.": ["Créez intros, outros et narration de leçons avec une voix constante.", "أنشئ المقدمات والخواتيم وتعليق الدروس بصوت ثابت."],"Website talking button": ["Bouton parlant pour site web", "زر ناطق للموقع"],"Add a talking button to any site with one snippet of embed code.": ["Ajoutez un bouton parlant à n’importe quel site avec un seul extrait de code.", "أضف زراً ناطقاً إلى أي موقع بمقطع كود واحد."],"Instant MP3 download of every script": ["Téléchargement MP3 instantané de chaque texte", "تنزيل MP3 فوري لكل نص"],"The free plan includes one listen. Pro unlocks instant MP3 downloads, unlimited listening, every voice and accent, and embed code.": ["L’offre gratuite comprend une écoute. Pro débloque les téléchargements MP3 instantanés, l’écoute illimitée, toutes les voix et tous les accents, et le code d’intégration.", "تتضمن الخطة المجانية استماعاً واحداً. يتيح Pro تنزيل MP3 فوراً والاستماع غير المحدود وجميع الأصوات واللهجات وكود التضمين."],"Is my script private?": ["Mon texte reste-t-il privé ?", "هل نصي خاص؟"],"Listening happens in your browser. When you download an MP3, your script is sent to our server to generate the audio, and we do not store it.": ["L’écoute se fait dans votre navigateur. Quand vous téléchargez un MP3, votre texte est envoyé à notre serveur pour générer l’audio, et nous ne le conservons pas.", "يتم الاستماع داخل متصفحك. عند تنزيل MP3 يُرسل نصك إلى خادمنا لإنشاء الصوت، ولا نحتفظ به."],"Do I need a microphone?": ["Ai-je besoin d’un micro ?", "هل أحتاج إلى ميكروفون؟"],"No. Your voiceover is generated from text, so you never record anything.": ["Non. Votre voix off est générée à partir du texte, vous n’enregistrez rien.", "لا. يُنشأ تعليقك الصوتي من النص، فلا تسجّل أي شيء."],"How long can my script be?": ["Quelle longueur peut avoir mon texte ?", "ما أقصى طول للنص؟"],"Each MP3 can be up to 5,000 characters, roughly five minutes of speech. For longer videos, download your script in parts.": ["Chaque MP3 peut contenir jusqu’à 5 000 caractères, soit environ cinq minutes de parole. Pour les vidéos plus longues, téléchargez votre texte en plusieurs parties.", "يمكن أن يصل كل ملف MP3 إلى 5000 حرف، أي نحو خمس دقائق من الكلام. للفيديوهات الأطول حمّل نصك على أجزاء."],"Turn any script into a voice. Download it instantly.": ["Transformez n’importe quel texte en voix. Téléchargez-la instantanément.", "حوّل أي نص إلى صوت. حمّله فوراً."],"For everyone who needs a voice: paste your text, pick a natural voice and get a ready-to-use MP3. Built especially for content creators making YouTube, TikTok, Reels and podcasts.": ["Pour tous ceux qui ont besoin d’une voix : collez votre texte, choisissez une voix naturelle et obtenez un MP3 prêt à l’emploi. Conçu surtout pour les créateurs de contenu : YouTube, TikTok, Reels et podcasts.", "لكل من يحتاج إلى صوت: الصق نصك، واختر صوتاً طبيعياً، واحصل على ملف MP3 جاهز. مصمم خصيصاً لصنّاع المحتوى على YouTube وTikTok وReels والبودكاست."],"Made for creators, useful for everyone": ["Pensé pour les créateurs, utile à tous", "مصمم لصنّاع المحتوى ومفيد للجميع"],"Voiceovers for videos, lessons, presentations and more, made in seconds instead of hours.": ["Des voix off pour vidéos, cours, présentations et plus, en quelques secondes au lieu de plusieurs heures.", "تعليقات صوتية للفيديوهات والدروس والعروض وغيرها، في ثوانٍ بدل ساعات."],"Business and presentations": ["Entreprises et présentations", "الأعمال والعروض التقديمية"],"Narrate demos, ads and presentations without booking a voice actor.": ["Commentez démos, publicités et présentations sans engager de comédien voix.", "اشرح العروض التجريبية والإعلانات والعروض التقديمية دون الحاجة إلى ممثل صوتي."],"Students and teachers": ["Étudiants et enseignants", "الطلاب والمعلمون"],"Turn notes and lessons into audio you can listen to anywhere.": ["Transformez notes et cours en audio à écouter partout.", "حوّل ملاحظاتك ودروسك إلى صوت تستمع إليه في أي مكان."]},LANG="en",LI={fr:0,ar:1},REV={};
+  Object.keys(DICT).forEach(function(k){DICT[k].forEach(function(t){if(!(t in REV))REV[t]=k})});
+  function T(s){var d=DICT[s];return LANG==="en"||!d?s:d[LI[LANG]]}
+  function walk(){
+    var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){var p=n.parentNode;if(!p||/^(SCRIPT|STYLE|PRE|TEXTAREA)$/.test(p.nodeName))return NodeFilter.FILTER_REJECT;return n.nodeValue.trim()?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}});
+    var n,list=[];while(n=w.nextNode())list.push(n);
+    list.forEach(function(n){
+      var raw=n.nodeValue,k=raw.trim();
+      if(n.__en===undefined){var en=DICT[k]?k:(REV[k]||k);n.__en=raw.replace(k,function(){return en})}
+      var ek=n.__en.trim();
+      n.nodeValue=(LANG==="en"||!DICT[ek])?n.__en:n.__en.replace(ek,function(){return DICT[ek][LI[LANG]]});
+    });
+  }
+  function setLang(l){
+    LANG=l;var h=document.documentElement;h.lang=l;h.dir=l==="ar"?"rtl":"ltr";
+    walk();$("st").textContent=T(speaking?"Speaking":"Ready");$("lang").value=l;
+    try{localStorage.setItem("vx-lang",l)}catch(e){}
+  }
+  $("script").setAttribute("dir","auto");
+  $("lang").onchange=function(){setLang(this.value)};
+  var savedLang=null;try{savedLang=localStorage.getItem("vx-lang")}catch(e){}
+  var nl=(navigator.language||"en").toLowerCase();
+  fetch("/config").then(function(r){return r.json()}).then(function(j){if(j.gumroad_url)GUMROAD_URL=j.gumroad_url;if(j.enforced===false){openMode=true}showTrial()}).catch(function(){});
+  fetch("/verify",{credentials:"same-origin"}).then(function(r){return r.json()}).then(function(j){if(j&&j.pro){proActive=true;showTrial()}}).catch(function(){});
+  showTrial();
+  setLang((savedLang&&savedLang!=="ary"?savedLang:null)||(nl.indexOf("ar")===0?"ar":nl.indexOf("fr")===0?"fr":"en"));
+})();
+</script>
+</body>
+</html>
